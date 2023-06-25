@@ -23,34 +23,15 @@ import {
 
 import { selectRestaurantFromStore } from "../../../services/redux/slices/restaurant.selector";
 
-import {
-  addItem,
-  reduceItem,
-  removeItem,
-} from "../../../services/redux/slices/basket.slice";
 import { BasketItem } from "../components/basket-item.component";
 
 export const BasketScreen = () => {
   const navigation = useNavigation();
-  const dispatch = useDispatch();
 
   const basketItems = useSelector(selectBasketItems);
-  const basketTotalQuantity = useSelector(selectBasketTotalQuantity);
   const basketTotal = useSelector(selectBasketTotal);
 
   const restaurant = useSelector(selectRestaurantFromStore);
-
-  const removeItemFromBasket = (item) => {
-    dispatch(removeItem(item));
-  };
-
-  const reduceItemFromBasket = (item) => {
-    dispatch(reduceItem(item));
-  };
-
-  const addItemToBasket = (item) => {
-    dispatch(addItem(item));
-  };
 
   return (
     <SafeAreaView className="felx-1 bg-white">
@@ -95,7 +76,7 @@ export const BasketScreen = () => {
           })}
         </ScrollView>
 
-        <View className="p-5 bg-white mt-5 space-y-4">
+        <View className="p-5 bg-white mt-5 space-y-6">
           <View className="flex-row justify-between">
             <Text className="text-gray-400">Subtotal</Text>
             <Text className="text-gray-400">
